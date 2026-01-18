@@ -1,0 +1,24 @@
+{
+  "name": "barbie-math-adventure",
+  "version": "1.0.0",
+  "description": "A Barbie-themed educational math game for girls, inspired by Prodigy Maths",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx serve .",
+    "dev": "npx live-server --port=3000"
+  },
+  "keywords": [
+    "barbie",
+    "math",
+    "educational",
+    "game",
+    "kids",
+    "learning"
+  ],
+  "author": "Violet Games",
+  "license": "MIT",
+  "devDependencies": {
+    "live-server": "^1.2.2",
+    "serve": "^14.2.0"
+  }
+}

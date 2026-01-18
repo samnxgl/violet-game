@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barbie Math Adventure - Learn Math the Fabulous Way!</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Pacifico&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="game-container">
+        <!-- Sparkle Effects -->
+        <div class="sparkles" id="sparkles"></div>
+
+        <!-- Main Menu Screen -->
+        <div id="main-menu" class="screen active">
+            <div class="menu-content">
+                <div class="logo-container">
+                    <h1 class="game-title">Barbie</h1>
+                    <h2 class="game-subtitle">Math Adventure</h2>
+                    <p class="tagline">Learn Math the Fabulous Way!</p>
+                </div>
+                <div class="menu-buttons">
+                    <button class="btn btn-primary" onclick="Game.showScreen('character-select')">
+                        <span class="btn-icon">✨</span> New Adventure
+                    </button>
+                    <button class="btn btn-secondary" onclick="Game.continueGame()">
+                        <span class="btn-icon">💖</span> Continue
+                    </button>
+                    <button class="btn btn-tertiary" onclick="Game.showScreen('settings')">
+                        <span class="btn-icon">⚙️</span> Settings
+                    </button>
+                </div>
+                <div class="menu-footer">
+                    <p>Learn addition, subtraction, multiplication & more!</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Character Selection Screen -->
+        <div id="character-select" class="screen">
+            <div class="screen-header">
+                <button class="back-btn" onclick="Game.showScreen('main-menu')">← Back</button>
+                <h2>Create Your Character</h2>
+            </div>
+            <div class="character-creator">
+                <div class="avatar-preview">
+                    <div class="avatar-display" id="avatar-display">
+                        <div class="avatar-hair" id="avatar-hair"></div>
+                        <div class="avatar-face" id="avatar-face">
+                            <div class="avatar-eyes"></div>
+                            <div class="avatar-smile"></div>
+                        </div>
+                        <div class="avatar-outfit" id="avatar-outfit"></div>
+                        <div class="avatar-accessory" id="avatar-accessory"></div>
+                    </div>
+                </div>
+                <div class="customization-options">
+                    <div class="option-group">
+                        <h3>Hair Style</h3>
+                        <div class="option-buttons" id="hair-options"></div>
+                    </div>
+                    <div class="option-group">
+                        <h3>Hair Color</h3>
+                        <div class="color-options" id="hair-color-options"></div>
+                    </div>
+                    <div class="option-group">
+                        <h3>Skin Tone</h3>
+                        <div class="color-options" id="skin-options"></div>
+                    </div>
+                    <div class="option-group">
+                        <h3>Outfit</h3>
+                        <div class="option-buttons" id="outfit-options"></div>
+                    </div>
+                </div>
+                <div class="name-input">
+                    <label for="character-name">Your Name</label>
+                    <input type="text" id="character-name" placeholder="Enter your name..." maxlength="15">
+                </div>
+                <button class="btn btn-primary btn-large" onclick="Game.startAdventure()">
+                    <span class="btn-icon">🌟</span> Start Adventure!
+                </button>
+            </div>
+        </div>
+
+        <!-- Grade Selection Screen -->
+        <div id="grade-select" class="screen">
+            <div class="screen-header">
+                <button class="back-btn" onclick="Game.showScreen('character-select')">← Back</button>
+                <h2>Choose Your Grade Level</h2>
+            </div>
+            <div class="grade-grid">
+                <div class="grade-card" onclick="Game.selectGrade('K')">
+                    <div class="grade-icon">🌈</div>
+                    <h3>Kindergarten</h3>
+                    <p>Counting & Basic Numbers</p>
+                    <div class="grade-stars">⭐</div>
+                </div>
+                <div class="grade-card" onclick="Game.selectGrade('1')">
+                    <div class="grade-icon">🦋</div>
+                    <h3>Grade 1</h3>
+                    <p>Addition & Subtraction</p>
+                    <div class="grade-stars">⭐⭐</div>
+                </div>
+                <div class="grade-card" onclick="Game.selectGrade('2')">
+                    <div class="grade-icon">🌸</div>
+                    <h3>Grade 2</h3>
+                    <p>Two-Digit Numbers</p>
+                    <div class="grade-stars">⭐⭐⭐</div>
+                </div>
+                <div class="grade-card" onclick="Game.selectGrade('3')">
+                    <div class="grade-icon">💎</div>
+                    <h3>Grade 3</h3>
+                    <p>Multiplication Basics</p>
+                    <div class="grade-stars">⭐⭐⭐⭐</div>
+                </div>
+                <div class="grade-card" onclick="Game.selectGrade('4')">
+                    <div class="grade-icon">👑</div>
+                    <h3>Grade 4</h3>
+                    <p>Division & Fractions</p>
+                    <div class="grade-stars">⭐⭐⭐⭐⭐</div>
+                </div>
+                <div class="grade-card" onclick="Game.selectGrade('5')">
+                    <div class="grade-icon">🏆</div>
+                    <h3>Grade 5</h3>
+                    <p>Advanced Math</p>
+                    <div class="grade-stars">⭐⭐⭐⭐⭐⭐</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- World Map Screen -->
+        <div id="world-map" class="screen">
+            <div class="map-header">
+                <div class="player-info">
+                    <div class="mini-avatar" id="mini-avatar"></div>
+                    <div class="player-stats">
+                        <span class="player-name" id="display-name">Player</span>
+                        <div class="xp-bar">
+                            <div class="xp-fill" id="xp-fill"></div>
+                        </div>
+                        <span class="level-display">Level <span id="player-level">1</span></span>
+                    </div>
+                </div>
+                <div class="currency-display">
+                    <div class="gems">
+                        <span class="gem-icon">💎</span>
+                        <span id="gem-count">0</span>
+                    </div>
+                    <div class="coins">
+                        <span class="coin-icon">🪙</span>
+                        <span id="coin-count">0</span>
+                    </div>
+                </div>
+                <div class="map-actions">
+                    <button class="icon-btn" onclick="Game.showScreen('wardrobe')">👗</button>
+                    <button class="icon-btn" onclick="Game.showScreen('achievements')">🏆</button>
+                    <button class="icon-btn" onclick="Game.showScreen('settings')">⚙️</button>
+                </div>
+            </div>
+            <div class="world-container">
+                <div class="world-path" id="world-path">
+                    <!-- Dynamically generated world locations -->
+                </div>
+            </div>
+            <div class="map-footer">
+                <button class="btn btn-secondary" onclick="Game.showScreen('main-menu')">
+                    <span class="btn-icon">🏠</span> Home
+                </button>
+            </div>
+        </div>
+
+        <!-- Battle/Math Challenge Screen -->
+        <div id="battle-screen" class="screen">
+            <div class="battle-header">
+                <div class="battle-stats">
+                    <div class="player-battle-info">
+                        <div class="battle-avatar" id="battle-avatar"></div>
+                        <div class="health-bar">
+                            <div class="health-fill player-health" id="player-health"></div>
+                        </div>
+                    </div>
+                    <div class="vs-badge">VS</div>
+                    <div class="enemy-battle-info">
+                        <div class="enemy-avatar" id="enemy-avatar"></div>
+                        <div class="health-bar">
+                            <div class="health-fill enemy-health" id="enemy-health"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="battle-arena">
+                <div class="enemy-display" id="enemy-display">
+                    <div class="enemy-sprite"></div>
+                    <span class="enemy-name" id="enemy-name">Math Monster</span>
+                </div>
+                <div class="math-challenge">
+                    <div class="question-box">
+                        <div class="question-category" id="question-category">Addition</div>
+                        <div class="question-text" id="question-text">5 + 3 = ?</div>
+                    </div>
+                    <div class="answer-section">
+                        <div class="answer-options" id="answer-options">
+                            <!-- Dynamically generated answer buttons -->
+                        </div>
+                        <div class="answer-input-container" id="answer-input-container" style="display: none;">
+                            <input type="number" id="answer-input" placeholder="Your answer...">
+                            <button class="btn btn-primary" onclick="Game.submitAnswer()">Submit</button>
+                        </div>
+                    </div>
+                    <div class="timer-bar">
+                        <div class="timer-fill" id="timer-fill"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="battle-footer">
+                <div class="streak-display">
+                    <span class="streak-label">Streak</span>
+                    <span class="streak-count" id="streak-count">0</span>
+                    <span class="streak-icon">🔥</span>
+                </div>
+                <div class="combo-display" id="combo-display"></div>
+            </div>
+        </div>
+
+        <!-- Victory Screen -->
+        <div id="victory-screen" class="screen">
+            <div class="victory-content">
+                <div class="victory-title">
+                    <h1>Fabulous!</h1>
+                    <div class="victory-stars">⭐⭐⭐</div>
+                </div>
+                <div class="victory-avatar" id="victory-avatar"></div>
+                <div class="rewards-display">
+                    <h3>Rewards Earned</h3>
+                    <div class="reward-items">
+                        <div class="reward-item">
+                            <span class="reward-icon">✨</span>
+                            <span class="reward-value" id="xp-earned">+50 XP</span>
+                        </div>
+                        <div class="reward-item">
+                            <span class="reward-icon">🪙</span>
+                            <span class="reward-value" id="coins-earned">+25 Coins</span>
+                        </div>
+                        <div class="reward-item" id="gem-reward" style="display: none;">
+                            <span class="reward-icon">💎</span>
+                            <span class="reward-value" id="gems-earned">+1 Gem</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="victory-stats">
+                    <div class="stat-item">
+                        <span class="stat-label">Questions</span>
+                        <span class="stat-value" id="questions-answered">10</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Correct</span>
+                        <span class="stat-value" id="correct-answers">8</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Best Streak</span>
+                        <span class="stat-value" id="best-streak">5</span>
+                    </div>
+                </div>
+                <div class="victory-buttons">
+                    <button class="btn btn-primary" onclick="Game.nextLevel()">
+                        <span class="btn-icon">➡️</span> Next Level
+                    </button>
+                    <button class="btn btn-secondary" onclick="Game.showScreen('world-map')">
+                        <span class="btn-icon">🗺️</span> World Map
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Game Over Screen -->
+        <div id="gameover-screen" class="screen">
+            <div class="gameover-content">
+                <h1>Keep Trying!</h1>
+                <p>Every mistake helps you learn!</p>
+                <div class="gameover-avatar" id="gameover-avatar"></div>
+                <div class="tip-box">
+                    <h3>💡 Math Tip</h3>
+                    <p id="math-tip">Remember: Addition means putting numbers together!</p>
+                </div>
+                <div class="gameover-buttons">
+                    <button class="btn btn-primary" onclick="Game.retryLevel()">
+                        <span class="btn-icon">🔄</span> Try Again
+                    </button>
+                    <button class="btn btn-secondary" onclick="Game.showScreen('world-map')">
+                        <span class="btn-icon">🗺️</span> World Map
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Wardrobe/Shop Screen -->
+        <div id="wardrobe" class="screen">
+            <div class="screen-header">
+                <button class="back-btn" onclick="Game.showScreen('world-map')">← Back</button>
+                <h2>Fashion Boutique</h2>
+                <div class="currency-display">
+                    <div class="gems">
+                        <span class="gem-icon">💎</span>
+                        <span id="wardrobe-gems">0</span>
+                    </div>
+                    <div class="coins">
+                        <span class="coin-icon">🪙</span>
+                        <span id="wardrobe-coins">0</span>
+                    </div>
+                </div>
+            </div>
+            <div class="wardrobe-content">
+                <div class="wardrobe-preview">
+                    <div class="wardrobe-avatar" id="wardrobe-avatar"></div>
+                </div>
+                <div class="wardrobe-tabs">
+                    <button class="tab-btn active" onclick="Game.showWardrobeTab('outfits')">👗 Outfits</button>
+                    <button class="tab-btn" onclick="Game.showWardrobeTab('hair')">💇 Hair</button>
+                    <button class="tab-btn" onclick="Game.showWardrobeTab('accessories')">💍 Accessories</button>
+                </div>
+                <div class="wardrobe-items" id="wardrobe-items">
+                    <!-- Dynamically generated items -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Achievements Screen -->
+        <div id="achievements" class="screen">
+            <div class="screen-header">
+                <button class="back-btn" onclick="Game.showScreen('world-map')">← Back</button>
+                <h2>Achievements</h2>
+            </div>
+            <div class="achievements-content">
+                <div class="achievements-summary">
+                    <div class="achievement-stat">
+                        <span class="stat-number" id="total-achievements">0</span>
+                        <span class="stat-label">Unlocked</span>
+                    </div>
+                    <div class="achievement-stat">
+                        <span class="stat-number" id="total-stars">0</span>
+                        <span class="stat-label">Total Stars</span>
+                    </div>
+                </div>
+                <div class="achievements-grid" id="achievements-grid">
+                    <!-- Dynamically generated achievements -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Settings Screen -->
+        <div id="settings" class="screen">
+            <div class="screen-header">
+                <button class="back-btn" onclick="Game.goBack()">← Back</button>
+                <h2>Settings</h2>
+            </div>
+            <div class="settings-content">
+                <div class="setting-item">
+                    <span class="setting-label">Music</span>
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="music-toggle" checked>
+                        <span class="toggle-slider"></span>
+                    </label>
+                </div>
+                <div class="setting-item">
+                    <span class="setting-label">Sound Effects</span>
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="sfx-toggle" checked>
+                        <span class="toggle-slider"></span>
+                    </label>
+                </div>
+                <div class="setting-item">
+                    <span class="setting-label">Timer in Challenges</span>
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="timer-toggle" checked>
+                        <span class="toggle-slider"></span>
+                    </label>
+                </div>
+                <div class="setting-item">
+                    <span class="setting-label">Difficulty</span>
+                    <select id="difficulty-select" class="setting-select">
+                        <option value="easy">Easy</option>
+                        <option value="normal" selected>Normal</option>
+                        <option value="hard">Hard</option>
+                    </select>
+                </div>
+                <div class="setting-divider"></div>
+                <button class="btn btn-danger" onclick="Game.resetProgress()">
+                    <span class="btn-icon">🗑️</span> Reset Progress
+                </button>
+            </div>
+        </div>
+
+        <!-- Loading Screen -->
+        <div id="loading-screen" class="screen">
+            <div class="loading-content">
+                <div class="loading-spinner"></div>
+                <p class="loading-text">Loading your adventure...</p>
+            </div>
+        </div>
+
+        <!-- Notification Toast -->
+        <div id="notification" class="notification">
+            <span class="notification-icon"></span>
+            <span class="notification-text"></span>
+        </div>
+
+        <!-- Level Up Modal -->
+        <div id="level-up-modal" class="modal">
+            <div class="modal-content level-up-content">
+                <div class="level-up-badge">🌟</div>
+                <h2>Level Up!</h2>
+                <p class="new-level">Level <span id="new-level">2</span></p>
+                <div class="level-up-rewards">
+                    <p>You unlocked:</p>
+                    <div class="unlock-items" id="unlock-items"></div>
+                </div>
+                <button class="btn btn-primary" onclick="Game.closeLevelUpModal()">
+                    <span class="btn-icon">✨</span> Amazing!
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/math-problems.js"></script>
+    <script src="js/game-data.js"></script>
+    <script src="js/game.js"></script>
+</body>
+</html>
