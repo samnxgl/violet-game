@@ -257,7 +257,7 @@ const Game = {
         if (!barbie) return;
 
         // Update hair color
-        const hairParts = barbie.querySelectorAll('.hair-back, .hair-front, .hair-bangs');
+        const hairParts = barbie.querySelectorAll('.hair-back, .hair-front, .hair-bangs, .hair-strands');
         hairParts.forEach(part => {
             part.style.background = this.state.character.hairColor;
         });
@@ -269,7 +269,7 @@ const Game = {
         }
 
         // Update skin color
-        const skinParts = barbie.querySelectorAll('.barbie-face, .barbie-neck, .arm, .leg');
+        const skinParts = barbie.querySelectorAll('.barbie-face, .barbie-neck, .arm, .leg, .hand');
         skinParts.forEach(part => {
             part.style.background = this.state.character.skinTone;
         });
@@ -277,7 +277,7 @@ const Game = {
         // Update eye color
         const irises = barbie.querySelectorAll('.iris');
         irises.forEach(iris => {
-            iris.style.background = this.state.character.eyeColor;
+            iris.style.background = `radial-gradient(circle at 30% 30%, ${this.lightenColor(this.state.character.eyeColor, 30)} 0%, ${this.state.character.eyeColor} 100%)`;
         });
 
         // Update accessory
@@ -287,19 +287,43 @@ const Game = {
             accessoryEl.textContent = accessory ? accessory.emoji : '';
         }
 
-        // Update dress
+        // Update dress - completely restyle with the dress color
         const dressEl = barbie.querySelector('.barbie-dress');
         if (dressEl) {
             const dress = GameData.getFashionItemById('dresses', this.state.character.currentDress);
-            if (dress) {
-                dressEl.className = 'barbie-dress';
+            if (dress && dress.color) {
+                const dressColor = dress.color;
+                const darkColor = this.darkenColor(dressColor, 20);
+                const lightColor = this.lightenColor(dressColor, 15);
+
+                // Apply to dress top
                 const dressTop = dressEl.querySelector('.dress-top');
-                const dressSkirt = dressEl.querySelector('.dress-skirt');
-                if (dressTop && dress.color) {
-                    dressTop.style.background = `linear-gradient(180deg, ${dress.color} 0%, ${this.darkenColor(dress.color)} 100%)`;
+                if (dressTop) {
+                    dressTop.style.background = `linear-gradient(180deg, ${lightColor} 0%, ${dressColor} 100%)`;
                 }
-                if (dressSkirt && dress.color) {
-                    dressSkirt.style.background = `linear-gradient(180deg, ${this.darkenColor(dress.color)} 0%, ${dress.color} 100%)`;
+
+                // Apply to dress bodice
+                const dressBodice = dressEl.querySelector('.dress-bodice');
+                if (dressBodice) {
+                    dressBodice.style.background = `linear-gradient(180deg, ${dressColor} 0%, ${darkColor} 100%)`;
+                }
+
+                // Apply to dress waist
+                const dressWaist = dressEl.querySelector('.dress-waist');
+                if (dressWaist) {
+                    dressWaist.style.background = darkColor;
+                }
+
+                // Apply to dress skirt
+                const dressSkirt = dressEl.querySelector('.dress-skirt');
+                if (dressSkirt) {
+                    dressSkirt.style.background = `linear-gradient(180deg, ${dressColor} 0%, ${lightColor} 50%, ${dressColor} 100%)`;
+                }
+
+                // Apply to skirt layer
+                const skirtLayer = dressEl.querySelector('.skirt-layer');
+                if (skirtLayer) {
+                    skirtLayer.style.background = `linear-gradient(180deg, transparent 0%, ${lightColor}40 50%, transparent 100%)`;
                 }
             }
         }
@@ -311,17 +335,44 @@ const Game = {
             if (shoes && shoes.color) {
                 const shoeEls = shoesEl.querySelectorAll('.shoe');
                 shoeEls.forEach(shoe => {
-                    shoe.style.background = `linear-gradient(180deg, ${shoes.color} 0%, ${this.darkenColor(shoes.color)} 100%)`;
+                    shoe.style.background = `linear-gradient(180deg, ${this.lightenColor(shoes.color, 10)} 0%, ${shoes.color} 50%, ${this.darkenColor(shoes.color, 15)} 100%)`;
+                });
+                const heelEls = shoesEl.querySelectorAll('.heel');
+                heelEls.forEach(heel => {
+                    heel.style.background = this.darkenColor(shoes.color, 25);
                 });
             }
         }
     },
 
-    darkenColor(color) {
-        if (color === 'rainbow') return '#E0218A';
-        if (color.startsWith('linear-gradient')) return '#E0218A';
-        // Simple color darkening
-        return color;
+    darkenColor(color, amount = 20) {
+        if (!color || color === 'rainbow') return '#C0186F';
+        if (color.startsWith('linear-gradient')) return '#C0186F';
+
+        // Convert hex to RGB and darken
+        let hex = color.replace('#', '');
+        if (hex.length === 3) {
+            hex = hex[0] + hex[0] + hex[1] + hex[1] + hex[2] + hex[2];
+        }
+        const r = Math.max(0, parseInt(hex.substring(0, 2), 16) - amount);
+        const g = Math.max(0, parseInt(hex.substring(2, 4), 16) - amount);
+        const b = Math.max(0, parseInt(hex.substring(4, 6), 16) - amount);
+        return `#${r.toString(16).padStart(2, '0')}${g.toString(16).padStart(2, '0')}${b.toString(16).padStart(2, '0')}`;
+    },
+
+    lightenColor(color, amount = 20) {
+        if (!color || color === 'rainbow') return '#FF8DC7';
+        if (color.startsWith('linear-gradient')) return '#FF8DC7';
+
+        // Convert hex to RGB and lighten
+        let hex = color.replace('#', '');
+        if (hex.length === 3) {
+            hex = hex[0] + hex[0] + hex[1] + hex[1] + hex[2] + hex[2];
+        }
+        const r = Math.min(255, parseInt(hex.substring(0, 2), 16) + amount);
+        const g = Math.min(255, parseInt(hex.substring(2, 4), 16) + amount);
+        const b = Math.min(255, parseInt(hex.substring(4, 6), 16) + amount);
+        return `#${r.toString(16).padStart(2, '0')}${g.toString(16).padStart(2, '0')}${b.toString(16).padStart(2, '0')}`;
     },
 
     startAdventure() {

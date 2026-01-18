@@ -55,6 +55,7 @@
                             <div class="hair-back"></div>
                             <div class="hair-front"></div>
                             <div class="hair-bangs"></div>
+                            <div class="hair-strands"></div>
                         </div>
                         <div class="barbie-accessory" id="barbie-accessory"></div>
                         <div class="barbie-head">
@@ -67,6 +68,7 @@
                                             <div class="eye-shine"></div>
                                         </div>
                                         <div class="eyelashes"></div>
+                                        <div class="eyelid"></div>
                                     </div>
                                     <div class="eye right">
                                         <div class="eyeball">
@@ -75,6 +77,7 @@
                                             <div class="eye-shine"></div>
                                         </div>
                                         <div class="eyelashes"></div>
+                                        <div class="eyelid"></div>
                                     </div>
                                 </div>
                                 <div class="barbie-eyebrows">
@@ -83,7 +86,8 @@
                                 </div>
                                 <div class="barbie-nose"></div>
                                 <div class="barbie-mouth">
-                                    <div class="lips"></div>
+                                    <div class="upper-lip"></div>
+                                    <div class="lower-lip"></div>
                                 </div>
                                 <div class="barbie-blush left"></div>
                                 <div class="barbie-blush right"></div>
@@ -92,12 +96,18 @@
                         <div class="barbie-neck"></div>
                         <div class="barbie-body">
                             <div class="barbie-dress" id="barbie-dress">
-                                <div class="dress-top"></div>
-                                <div class="dress-skirt"></div>
+                                <div class="dress-top">
+                                    <div class="dress-neckline"></div>
+                                    <div class="dress-bodice"></div>
+                                </div>
+                                <div class="dress-waist"></div>
+                                <div class="dress-skirt">
+                                    <div class="skirt-layer"></div>
+                                </div>
                             </div>
                             <div class="barbie-arms">
-                                <div class="arm left"></div>
-                                <div class="arm right"></div>
+                                <div class="arm left"><div class="hand"></div></div>
+                                <div class="arm right"><div class="hand"></div></div>
                             </div>
                         </div>
                         <div class="barbie-legs">
@@ -105,8 +115,8 @@
                             <div class="leg right"></div>
                         </div>
                         <div class="barbie-shoes" id="barbie-shoes">
-                            <div class="shoe left"></div>
-                            <div class="shoe right"></div>
+                            <div class="shoe left"><div class="heel"></div></div>
+                            <div class="shoe right"><div class="heel"></div></div>
                         </div>
                     </div>
                 </div>
@@ -243,7 +253,83 @@
                 <div class="closet-barbie-container">
                     <div class="closet-stage">
                         <div class="stage-lights"></div>
-                        <div class="barbie-doll large" id="closet-barbie"></div>
+                        <div class="barbie-doll large" id="closet-barbie">
+                            <div class="barbie-hair" id="closet-barbie-hair">
+                                <div class="hair-back"></div>
+                                <div class="hair-front"></div>
+                                <div class="hair-bangs"></div>
+                                <div class="hair-strands"></div>
+                            </div>
+                            <div class="barbie-accessory" id="closet-barbie-accessory"></div>
+                            <div class="barbie-head">
+                                <div class="barbie-face" id="closet-barbie-face">
+                                    <div class="barbie-eyes">
+                                        <div class="eye left">
+                                            <div class="eyeball">
+                                                <div class="iris"></div>
+                                                <div class="pupil"></div>
+                                                <div class="eye-shine"></div>
+                                            </div>
+                                            <div class="eyelashes"></div>
+                                            <div class="eyelid"></div>
+                                        </div>
+                                        <div class="eye right">
+                                            <div class="eyeball">
+                                                <div class="iris"></div>
+                                                <div class="pupil"></div>
+                                                <div class="eye-shine"></div>
+                                            </div>
+                                            <div class="eyelashes"></div>
+                                            <div class="eyelid"></div>
+                                        </div>
+                                    </div>
+                                    <div class="barbie-eyebrows">
+                                        <div class="eyebrow left"></div>
+                                        <div class="eyebrow right"></div>
+                                    </div>
+                                    <div class="barbie-nose"></div>
+                                    <div class="barbie-mouth">
+                                        <div class="upper-lip"></div>
+                                        <div class="lower-lip"></div>
+                                    </div>
+                                    <div class="barbie-blush left"></div>
+                                    <div class="barbie-blush right"></div>
+                                </div>
+                            </div>
+                            <div class="barbie-neck"></div>
+                            <div class="barbie-body">
+                                <div class="barbie-dress" id="closet-barbie-dress">
+                                    <div class="dress-top">
+                                        <div class="dress-neckline"></div>
+                                        <div class="dress-bodice"></div>
+                                    </div>
+                                    <div class="dress-waist"></div>
+                                    <div class="dress-skirt">
+                                        <div class="skirt-layer"></div>
+                                    </div>
+                                </div>
+                                <div class="barbie-arms">
+                                    <div class="arm left">
+                                        <div class="hand"></div>
+                                    </div>
+                                    <div class="arm right">
+                                        <div class="hand"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="barbie-legs">
+                                <div class="leg left"></div>
+                                <div class="leg right"></div>
+                            </div>
+                            <div class="barbie-shoes" id="closet-barbie-shoes">
+                                <div class="shoe left">
+                                    <div class="heel"></div>
+                                </div>
+                                <div class="shoe right">
+                                    <div class="heel"></div>
+                                </div>
+                            </div>
+                        </div>
                         <div class="stage-floor"></div>
                     </div>
                     <div class="outfit-name-display" id="current-outfit-name">Classic Pink Dress</div>
@@ -353,7 +439,75 @@
                     </div>
                 </div>
                 <div class="victory-barbie-runway">
-                    <div class="barbie-doll victory" id="victory-barbie"></div>
+                    <div class="barbie-doll victory" id="victory-barbie">
+                        <div class="barbie-hair">
+                            <div class="hair-back"></div>
+                            <div class="hair-front"></div>
+                            <div class="hair-bangs"></div>
+                            <div class="hair-strands"></div>
+                        </div>
+                        <div class="barbie-accessory"></div>
+                        <div class="barbie-head">
+                            <div class="barbie-face">
+                                <div class="barbie-eyes">
+                                    <div class="eye left">
+                                        <div class="eyeball">
+                                            <div class="iris"></div>
+                                            <div class="pupil"></div>
+                                            <div class="eye-shine"></div>
+                                        </div>
+                                        <div class="eyelashes"></div>
+                                        <div class="eyelid"></div>
+                                    </div>
+                                    <div class="eye right">
+                                        <div class="eyeball">
+                                            <div class="iris"></div>
+                                            <div class="pupil"></div>
+                                            <div class="eye-shine"></div>
+                                        </div>
+                                        <div class="eyelashes"></div>
+                                        <div class="eyelid"></div>
+                                    </div>
+                                </div>
+                                <div class="barbie-eyebrows">
+                                    <div class="eyebrow left"></div>
+                                    <div class="eyebrow right"></div>
+                                </div>
+                                <div class="barbie-nose"></div>
+                                <div class="barbie-mouth">
+                                    <div class="upper-lip"></div>
+                                    <div class="lower-lip"></div>
+                                </div>
+                                <div class="barbie-blush left"></div>
+                                <div class="barbie-blush right"></div>
+                            </div>
+                        </div>
+                        <div class="barbie-neck"></div>
+                        <div class="barbie-body">
+                            <div class="barbie-dress">
+                                <div class="dress-top">
+                                    <div class="dress-neckline"></div>
+                                    <div class="dress-bodice"></div>
+                                </div>
+                                <div class="dress-waist"></div>
+                                <div class="dress-skirt">
+                                    <div class="skirt-layer"></div>
+                                </div>
+                            </div>
+                            <div class="barbie-arms">
+                                <div class="arm left"><div class="hand"></div></div>
+                                <div class="arm right"><div class="hand"></div></div>
+                            </div>
+                        </div>
+                        <div class="barbie-legs">
+                            <div class="leg left"></div>
+                            <div class="leg right"></div>
+                        </div>
+                        <div class="barbie-shoes">
+                            <div class="shoe left"><div class="heel"></div></div>
+                            <div class="shoe right"><div class="heel"></div></div>
+                        </div>
+                    </div>
                 </div>
                 <div class="victory-stats-mini">
                     <div class="stat-item">
