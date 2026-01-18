@@ -20,7 +20,10 @@
                 <div class="logo-container">
                     <h1 class="game-title">Barbie</h1>
                     <h2 class="game-subtitle">Math Adventure</h2>
-                    <p class="tagline">Learn Math the Fabulous Way!</p>
+                    <p class="tagline">Solve Math, Unlock Fashion!</p>
+                </div>
+                <div class="barbie-showcase">
+                    <div class="showcase-barbie" id="menu-barbie"></div>
                 </div>
                 <div class="menu-buttons">
                     <button class="btn btn-primary" onclick="Game.showScreen('character-select')">
@@ -34,7 +37,7 @@
                     </button>
                 </div>
                 <div class="menu-footer">
-                    <p>Learn addition, subtraction, multiplication & more!</p>
+                    <p>Solve problems to unlock fabulous outfits!</p>
                 </div>
             </div>
         </div>
@@ -43,18 +46,68 @@
         <div id="character-select" class="screen">
             <div class="screen-header">
                 <button class="back-btn" onclick="Game.showScreen('main-menu')">← Back</button>
-                <h2>Create Your Character</h2>
+                <h2>Create Your Barbie</h2>
             </div>
             <div class="character-creator">
                 <div class="avatar-preview">
-                    <div class="avatar-display" id="avatar-display">
-                        <div class="avatar-hair" id="avatar-hair"></div>
-                        <div class="avatar-face" id="avatar-face">
-                            <div class="avatar-eyes"></div>
-                            <div class="avatar-smile"></div>
+                    <div class="barbie-doll" id="creator-barbie">
+                        <div class="barbie-hair" id="barbie-hair">
+                            <div class="hair-back"></div>
+                            <div class="hair-front"></div>
+                            <div class="hair-bangs"></div>
                         </div>
-                        <div class="avatar-outfit" id="avatar-outfit"></div>
-                        <div class="avatar-accessory" id="avatar-accessory"></div>
+                        <div class="barbie-accessory" id="barbie-accessory"></div>
+                        <div class="barbie-head">
+                            <div class="barbie-face" id="barbie-face">
+                                <div class="barbie-eyes">
+                                    <div class="eye left">
+                                        <div class="eyeball">
+                                            <div class="iris"></div>
+                                            <div class="pupil"></div>
+                                            <div class="eye-shine"></div>
+                                        </div>
+                                        <div class="eyelashes"></div>
+                                    </div>
+                                    <div class="eye right">
+                                        <div class="eyeball">
+                                            <div class="iris"></div>
+                                            <div class="pupil"></div>
+                                            <div class="eye-shine"></div>
+                                        </div>
+                                        <div class="eyelashes"></div>
+                                    </div>
+                                </div>
+                                <div class="barbie-eyebrows">
+                                    <div class="eyebrow left"></div>
+                                    <div class="eyebrow right"></div>
+                                </div>
+                                <div class="barbie-nose"></div>
+                                <div class="barbie-mouth">
+                                    <div class="lips"></div>
+                                </div>
+                                <div class="barbie-blush left"></div>
+                                <div class="barbie-blush right"></div>
+                            </div>
+                        </div>
+                        <div class="barbie-neck"></div>
+                        <div class="barbie-body">
+                            <div class="barbie-dress" id="barbie-dress">
+                                <div class="dress-top"></div>
+                                <div class="dress-skirt"></div>
+                            </div>
+                            <div class="barbie-arms">
+                                <div class="arm left"></div>
+                                <div class="arm right"></div>
+                            </div>
+                        </div>
+                        <div class="barbie-legs">
+                            <div class="leg left"></div>
+                            <div class="leg right"></div>
+                        </div>
+                        <div class="barbie-shoes" id="barbie-shoes">
+                            <div class="shoe left"></div>
+                            <div class="shoe right"></div>
+                        </div>
                     </div>
                 </div>
                 <div class="customization-options">
@@ -71,13 +124,13 @@
                         <div class="color-options" id="skin-options"></div>
                     </div>
                     <div class="option-group">
-                        <h3>Outfit</h3>
-                        <div class="option-buttons" id="outfit-options"></div>
+                        <h3>Eye Color</h3>
+                        <div class="color-options" id="eye-color-options"></div>
                     </div>
                 </div>
                 <div class="name-input">
-                    <label for="character-name">Your Name</label>
-                    <input type="text" id="character-name" placeholder="Enter your name..." maxlength="15">
+                    <label for="character-name">Your Barbie's Name</label>
+                    <input type="text" id="character-name" placeholder="Enter name..." maxlength="15">
                 </div>
                 <button class="btn btn-primary btn-large" onclick="Game.startAdventure()">
                     <span class="btn-icon">🌟</span> Start Adventure!
@@ -89,44 +142,47 @@
         <div id="grade-select" class="screen">
             <div class="screen-header">
                 <button class="back-btn" onclick="Game.showScreen('character-select')">← Back</button>
-                <h2>Choose Your Grade Level</h2>
+                <h2>Choose Your Level</h2>
+            </div>
+            <div class="grade-intro">
+                <p>Pick your math level to start earning fabulous outfits!</p>
             </div>
             <div class="grade-grid">
                 <div class="grade-card" onclick="Game.selectGrade('K')">
                     <div class="grade-icon">🌈</div>
                     <h3>Kindergarten</h3>
                     <p>Counting & Basic Numbers</p>
-                    <div class="grade-stars">⭐</div>
+                    <div class="grade-reward">🎀 Unlock: Hair Bows</div>
                 </div>
                 <div class="grade-card" onclick="Game.selectGrade('1')">
                     <div class="grade-icon">🦋</div>
                     <h3>Grade 1</h3>
                     <p>Addition & Subtraction</p>
-                    <div class="grade-stars">⭐⭐</div>
+                    <div class="grade-reward">👗 Unlock: Casual Dresses</div>
                 </div>
                 <div class="grade-card" onclick="Game.selectGrade('2')">
                     <div class="grade-icon">🌸</div>
                     <h3>Grade 2</h3>
                     <p>Two-Digit Numbers</p>
-                    <div class="grade-stars">⭐⭐⭐</div>
+                    <div class="grade-reward">👠 Unlock: Heels</div>
                 </div>
                 <div class="grade-card" onclick="Game.selectGrade('3')">
                     <div class="grade-icon">💎</div>
                     <h3>Grade 3</h3>
                     <p>Multiplication Basics</p>
-                    <div class="grade-stars">⭐⭐⭐⭐</div>
+                    <div class="grade-reward">👑 Unlock: Tiaras</div>
                 </div>
                 <div class="grade-card" onclick="Game.selectGrade('4')">
                     <div class="grade-icon">👑</div>
                     <h3>Grade 4</h3>
                     <p>Division & Fractions</p>
-                    <div class="grade-stars">⭐⭐⭐⭐⭐</div>
+                    <div class="grade-reward">✨ Unlock: Gowns</div>
                 </div>
                 <div class="grade-card" onclick="Game.selectGrade('5')">
                     <div class="grade-icon">🏆</div>
                     <h3>Grade 5</h3>
                     <p>Advanced Math</p>
-                    <div class="grade-stars">⭐⭐⭐⭐⭐⭐</div>
+                    <div class="grade-reward">💎 Unlock: Diamonds</div>
                 </div>
             </div>
         </div>
@@ -135,7 +191,7 @@
         <div id="world-map" class="screen">
             <div class="map-header">
                 <div class="player-info">
-                    <div class="mini-avatar" id="mini-avatar"></div>
+                    <div class="mini-barbie" id="mini-barbie"></div>
                     <div class="player-stats">
                         <span class="player-name" id="display-name">Player</span>
                         <div class="xp-bar">
@@ -144,18 +200,18 @@
                         <span class="level-display">Level <span id="player-level">1</span></span>
                     </div>
                 </div>
-                <div class="currency-display">
-                    <div class="gems">
-                        <span class="gem-icon">💎</span>
-                        <span id="gem-count">0</span>
+                <div class="fashion-progress">
+                    <div class="fashion-stat">
+                        <span class="fashion-icon">👗</span>
+                        <span id="outfit-count">2</span>/<span id="outfit-total">20</span>
                     </div>
-                    <div class="coins">
-                        <span class="coin-icon">🪙</span>
-                        <span id="coin-count">0</span>
+                    <div class="fashion-stat">
+                        <span class="fashion-icon">💎</span>
+                        <span id="gem-count">0</span>
                     </div>
                 </div>
                 <div class="map-actions">
-                    <button class="icon-btn" onclick="Game.showScreen('wardrobe')">👗</button>
+                    <button class="icon-btn" onclick="Game.showScreen('fashion-closet')">👗</button>
                     <button class="icon-btn" onclick="Game.showScreen('achievements')">🏆</button>
                     <button class="icon-btn" onclick="Game.showScreen('settings')">⚙️</button>
                 </div>
@@ -166,9 +222,54 @@
                 </div>
             </div>
             <div class="map-footer">
-                <button class="btn btn-secondary" onclick="Game.showScreen('main-menu')">
-                    <span class="btn-icon">🏠</span> Home
-                </button>
+                <div class="next-unlock-hint">
+                    <span class="hint-icon">💡</span>
+                    <span class="hint-text" id="next-unlock-hint">Complete levels to unlock new fashion items!</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Fashion Closet Screen (Replaces Wardrobe) -->
+        <div id="fashion-closet" class="screen">
+            <div class="screen-header">
+                <button class="back-btn" onclick="Game.showScreen('world-map')">← Back</button>
+                <h2>Fashion Closet</h2>
+                <div class="closet-stats">
+                    <span class="closet-stat">👗 <span id="closet-outfits">0</span></span>
+                    <span class="closet-stat">💎 <span id="closet-gems">0</span></span>
+                </div>
+            </div>
+            <div class="closet-content">
+                <div class="closet-barbie-container">
+                    <div class="closet-stage">
+                        <div class="stage-lights"></div>
+                        <div class="barbie-doll large" id="closet-barbie"></div>
+                        <div class="stage-floor"></div>
+                    </div>
+                    <div class="outfit-name-display" id="current-outfit-name">Classic Pink Dress</div>
+                </div>
+                <div class="closet-categories">
+                    <button class="category-btn active" onclick="Game.showClosetCategory('dresses')">
+                        <span>👗</span> Dresses
+                    </button>
+                    <button class="category-btn" onclick="Game.showClosetCategory('tops')">
+                        <span>👚</span> Tops
+                    </button>
+                    <button class="category-btn" onclick="Game.showClosetCategory('accessories')">
+                        <span>👑</span> Accessories
+                    </button>
+                    <button class="category-btn" onclick="Game.showClosetCategory('shoes')">
+                        <span>👠</span> Shoes
+                    </button>
+                    <button class="category-btn" onclick="Game.showClosetCategory('hairstyles')">
+                        <span>💇</span> Hair
+                    </button>
+                </div>
+                <div class="closet-items-scroll">
+                    <div class="closet-items" id="closet-items">
+                        <!-- Dynamically generated items -->
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -177,7 +278,7 @@
             <div class="battle-header">
                 <div class="battle-stats">
                     <div class="player-battle-info">
-                        <div class="battle-avatar" id="battle-avatar"></div>
+                        <div class="mini-barbie battle" id="battle-barbie"></div>
                         <div class="health-bar">
                             <div class="health-fill player-health" id="player-health"></div>
                         </div>
@@ -192,6 +293,10 @@
                 </div>
             </div>
             <div class="battle-arena">
+                <div class="reward-preview" id="reward-preview">
+                    <span class="reward-label">Win to unlock:</span>
+                    <div class="reward-item-preview" id="reward-item-preview"></div>
+                </div>
                 <div class="enemy-display" id="enemy-display">
                     <div class="enemy-sprite"></div>
                     <span class="enemy-name" id="enemy-name">Math Monster</span>
@@ -221,55 +326,55 @@
                     <span class="streak-count" id="streak-count">0</span>
                     <span class="streak-icon">🔥</span>
                 </div>
-                <div class="combo-display" id="combo-display"></div>
+                <div class="problems-remaining">
+                    <span id="problems-done">0</span>/<span id="problems-total">5</span>
+                </div>
             </div>
+            <div class="combo-display" id="combo-display"></div>
         </div>
 
-        <!-- Victory Screen -->
+        <!-- Victory Screen with Fashion Reward -->
         <div id="victory-screen" class="screen">
             <div class="victory-content">
                 <div class="victory-title">
                     <h1>Fabulous!</h1>
                     <div class="victory-stars">⭐⭐⭐</div>
                 </div>
-                <div class="victory-avatar" id="victory-avatar"></div>
-                <div class="rewards-display">
-                    <h3>Rewards Earned</h3>
-                    <div class="reward-items">
-                        <div class="reward-item">
-                            <span class="reward-icon">✨</span>
-                            <span class="reward-value" id="xp-earned">+50 XP</span>
+                <div class="fashion-reward-showcase" id="fashion-reward-showcase">
+                    <div class="reward-spotlight">
+                        <div class="spotlight-glow"></div>
+                        <div class="unlocked-item" id="unlocked-item">
+                            <span class="unlock-icon">👗</span>
                         </div>
-                        <div class="reward-item">
-                            <span class="reward-icon">🪙</span>
-                            <span class="reward-value" id="coins-earned">+25 Coins</span>
-                        </div>
-                        <div class="reward-item" id="gem-reward" style="display: none;">
-                            <span class="reward-icon">💎</span>
-                            <span class="reward-value" id="gems-earned">+1 Gem</span>
-                        </div>
+                    </div>
+                    <div class="reward-announcement">
+                        <h3>New Item Unlocked!</h3>
+                        <p class="reward-name" id="reward-name">Pink Party Dress</p>
                     </div>
                 </div>
-                <div class="victory-stats">
+                <div class="victory-barbie-runway">
+                    <div class="barbie-doll victory" id="victory-barbie"></div>
+                </div>
+                <div class="victory-stats-mini">
                     <div class="stat-item">
-                        <span class="stat-label">Questions</span>
-                        <span class="stat-value" id="questions-answered">10</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-label">Correct</span>
                         <span class="stat-value" id="correct-answers">8</span>
+                        <span class="stat-label">Correct</span>
                     </div>
                     <div class="stat-item">
-                        <span class="stat-label">Best Streak</span>
                         <span class="stat-value" id="best-streak">5</span>
+                        <span class="stat-label">Best Streak</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value" id="xp-earned">+50</span>
+                        <span class="stat-label">XP</span>
                     </div>
                 </div>
                 <div class="victory-buttons">
-                    <button class="btn btn-primary" onclick="Game.nextLevel()">
-                        <span class="btn-icon">➡️</span> Next Level
+                    <button class="btn btn-primary" onclick="Game.showScreen('fashion-closet')">
+                        <span class="btn-icon">👗</span> Try It On!
                     </button>
-                    <button class="btn btn-secondary" onclick="Game.showScreen('world-map')">
-                        <span class="btn-icon">🗺️</span> World Map
+                    <button class="btn btn-secondary" onclick="Game.nextLevel()">
+                        <span class="btn-icon">➡️</span> Next Level
                     </button>
                 </div>
             </div>
@@ -280,10 +385,14 @@
             <div class="gameover-content">
                 <h1>Keep Trying!</h1>
                 <p>Every mistake helps you learn!</p>
-                <div class="gameover-avatar" id="gameover-avatar"></div>
+                <div class="gameover-barbie" id="gameover-barbie"></div>
                 <div class="tip-box">
                     <h3>💡 Math Tip</h3>
                     <p id="math-tip">Remember: Addition means putting numbers together!</p>
+                </div>
+                <div class="almost-unlocked">
+                    <p>You were so close to unlocking:</p>
+                    <div class="almost-item" id="almost-item">👗</div>
                 </div>
                 <div class="gameover-buttons">
                     <button class="btn btn-primary" onclick="Game.retryLevel()">
@@ -292,37 +401,6 @@
                     <button class="btn btn-secondary" onclick="Game.showScreen('world-map')">
                         <span class="btn-icon">🗺️</span> World Map
                     </button>
-                </div>
-            </div>
-        </div>
-
-        <!-- Wardrobe/Shop Screen -->
-        <div id="wardrobe" class="screen">
-            <div class="screen-header">
-                <button class="back-btn" onclick="Game.showScreen('world-map')">← Back</button>
-                <h2>Fashion Boutique</h2>
-                <div class="currency-display">
-                    <div class="gems">
-                        <span class="gem-icon">💎</span>
-                        <span id="wardrobe-gems">0</span>
-                    </div>
-                    <div class="coins">
-                        <span class="coin-icon">🪙</span>
-                        <span id="wardrobe-coins">0</span>
-                    </div>
-                </div>
-            </div>
-            <div class="wardrobe-content">
-                <div class="wardrobe-preview">
-                    <div class="wardrobe-avatar" id="wardrobe-avatar"></div>
-                </div>
-                <div class="wardrobe-tabs">
-                    <button class="tab-btn active" onclick="Game.showWardrobeTab('outfits')">👗 Outfits</button>
-                    <button class="tab-btn" onclick="Game.showWardrobeTab('hair')">💇 Hair</button>
-                    <button class="tab-btn" onclick="Game.showWardrobeTab('accessories')">💍 Accessories</button>
-                </div>
-                <div class="wardrobe-items" id="wardrobe-items">
-                    <!-- Dynamically generated items -->
                 </div>
             </div>
         </div>
@@ -340,8 +418,8 @@
                         <span class="stat-label">Unlocked</span>
                     </div>
                     <div class="achievement-stat">
-                        <span class="stat-number" id="total-stars">0</span>
-                        <span class="stat-label">Total Stars</span>
+                        <span class="stat-number" id="total-fashion">0</span>
+                        <span class="stat-label">Fashion Items</span>
                     </div>
                 </div>
                 <div class="achievements-grid" id="achievements-grid">
@@ -393,11 +471,31 @@
             </div>
         </div>
 
+        <!-- Fashion Show Screen (New!) -->
+        <div id="fashion-show" class="screen">
+            <div class="screen-header">
+                <button class="back-btn" onclick="Game.showScreen('world-map')">← Back</button>
+                <h2>Fashion Show</h2>
+            </div>
+            <div class="fashion-show-content">
+                <div class="runway">
+                    <div class="runway-lights"></div>
+                    <div class="barbie-doll runway-model" id="runway-barbie"></div>
+                    <div class="runway-floor"></div>
+                </div>
+                <div class="fashion-show-controls">
+                    <button class="btn btn-secondary" onclick="Game.previousOutfit()">← Prev</button>
+                    <button class="btn btn-primary" onclick="Game.saveOutfit()">💖 Save Look</button>
+                    <button class="btn btn-secondary" onclick="Game.nextOutfit()">Next →</button>
+                </div>
+            </div>
+        </div>
+
         <!-- Loading Screen -->
         <div id="loading-screen" class="screen">
             <div class="loading-content">
                 <div class="loading-spinner"></div>
-                <p class="loading-text">Loading your adventure...</p>
+                <p class="loading-text">Loading your fashion adventure...</p>
             </div>
         </div>
 
@@ -419,6 +517,22 @@
                 </div>
                 <button class="btn btn-primary" onclick="Game.closeLevelUpModal()">
                     <span class="btn-icon">✨</span> Amazing!
+                </button>
+            </div>
+        </div>
+
+        <!-- New Fashion Item Modal -->
+        <div id="fashion-unlock-modal" class="modal">
+            <div class="modal-content fashion-unlock-content">
+                <div class="confetti-container" id="confetti"></div>
+                <h2>✨ New Fashion Unlocked! ✨</h2>
+                <div class="fashion-unlock-preview" id="fashion-unlock-preview">
+                    <div class="unlock-item-large"></div>
+                </div>
+                <p class="fashion-unlock-name" id="fashion-unlock-name">Pink Sparkle Dress</p>
+                <p class="fashion-unlock-hint">Go to your Fashion Closet to try it on!</p>
+                <button class="btn btn-primary" onclick="Game.closeFashionModal()">
+                    <span class="btn-icon">💖</span> Yay!
                 </button>
             </div>
         </div>
